@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: block;">
+    <h1>Title:<span style="color:grey"> {{ review.username }}</span></h1>
+    <h1>Details:<span style="color:grey"> {{ review.review }}</span></h1>
+    <h1>Rating:<span style="color:grey"> {{ review.rating }}</span></h1>
+    <form action="{% url 'add_favorite' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="review_id" value="{{ review.id }}">
+        <input type="submit" value="Favorite" style="background-color:orange;color:white"></input>
+    </form>
+    {% if fav_review_id %}
+        <h1>Talha is a good boy</h1>
+    {% endif %}
+    <a href="{% url 'review_list' %}" style="color:red;">&larr; GO BACK</a>
+</div>
+{% endblock content %}

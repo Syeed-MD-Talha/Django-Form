@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a Profile</title>
+  <link rel="stylesheet" href='{% static "profile.css" %}'>
+</head>
+<body>
+  <form  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- <input type="file" name="image " /> -->
+     {{form}}
+    <button>Upload!</button>
+  </form>
+  <a href="{% url 'review_list' %}" style="background-color:tomato;padding:5px">Click for All review list</a>
+</body>
+</html>

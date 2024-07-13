@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if has_error %}
+Your username is not valid!!!. Please Enter valid user name
+{% endif %}
+<form action="" method="POST">
+ {% csrf_token %}
+ {% for field in form %}
+    <div class="form-container {% if form.username.errors %}errors{% endif %}">   
+     {{field.label_tag}}
+     {{field}}
+     {{field.errors}}
+     </div>
+ {% endfor %}
+ <button type="submit">Send</button>
+</form>  
+<a href="{% url 'review_list' %}" style="background-color:tomato; margin-left: 20px;padding:5px">Click for All review list</a>
+<a href="{% url 'profile_list' %}" style="background-color:tomato; margin-left: 20px;padding:5px">All Images</a>
+{% endblock content %}
